@@ -1,0 +1,16 @@
+%% Market data pipeline — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart LR
+  Source[Provider records + revisions] --> Ingest[Adapter / cursor]
+  Ingest --> Identity[Stable instrument identity]
+  Identity --> Normalize[Normalize / timestamp / deduplicate]
+  Normalize --> Validate{Valid and attributable?}
+  Validate -->|No| Quarantine[Quarantine / health incident]
+  Validate -->|Yes| Persist[Immutable observations / manifests]
+  Persist --> Quality[Freshness and knowledge-time gates]
+  Quality --> Features[Versioned feature snapshots]
+  Quality -->|Not ready| Block[Block affected strategies]
+  Persist --> History[Parquet history / DuckDB]
+  Features --> Scanner[Scanner / Pods]
+
+  Features --> Regime[Versioned deterministic regime / knowledge cutoff]
+  Regime --> Scanner

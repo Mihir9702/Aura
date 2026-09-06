@@ -1,0 +1,12 @@
+%% System context — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart LR
+  User[User] --> Web[React web app]
+  Web --> API[FastAPI / Aura monolith]
+  Sources[Market and information sources] --> API
+  Docs[Legally usable reference material] --> API
+  API --> Models[Approved model providers]
+  API --> Paper[Paper adapter only]
+  Paper --> API
+  API --> PG[(PostgreSQL operational truth)]
+  API --> Files[(Parquet / artifacts)]
+  Files --> Duck[DuckDB research queries]

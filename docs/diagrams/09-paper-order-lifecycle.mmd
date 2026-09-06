@@ -1,0 +1,30 @@
+%% Paper order lifecycle — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Created[CREATED] --> Authorized[AUTHORIZED]
+  Created --> Rejected[REJECTED]
+  Authorized --> Gate{Current capability and permission gates}
+  Gate -->|Admitted| Submitting[SUBMITTING]
+  Gate -->|Blocked| Block[No dispatch / preserve attempted-order recovery]
+  Authorized --> Expired[EXPIRED / CANCELED if never attempted]
+  Submitting --> Unknown[SUBMISSION_UNKNOWN]
+  Unknown --> Reconcile[Query stable client ID / history]
+  Reconcile --> Ack[ACKNOWLEDGED]
+  Reconcile --> Partial[PARTIALLY_FILLED]
+  Reconcile --> Filled[FILLED]
+  Reconcile --> Rejected
+  Submitting --> Ack
+  Submitting --> Partial
+  Submitting --> Filled
+  Submitting --> Rejected
+  Ack --> Partial
+  Ack --> Filled
+  Ack --> Cancel[CANCEL_PENDING]
+  Partial --> Cancel
+  Partial --> Filled
+  Cancel --> Canceled[CANCELED confirmed remainder]
+  Cancel --> Partial
+  Cancel --> Filled
+  Partial --> Ledger[Unique fill posting to Ledger]
+  Filled --> Ledger
+  Canceled --> Late[Late facts still reconcile]
+  Late --> Ledger

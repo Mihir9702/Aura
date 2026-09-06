@@ -1,0 +1,18 @@
+%% Event architecture — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Command[Validated command / expected version] --> Tx[Owning application transaction]
+  Tx --> State[(Domain state)]
+  Tx --> Outbox[(Outbox event)]
+  Outbox --> Dispatch[Leased dispatcher / at-least-once delivery]
+  Dispatch --> Consumer[Consumer validates version / sequence]
+  Consumer --> Inbox[(Inbox deduplication)]
+  Consumer --> Effect[Atomic local effect + next outbox]
+  Consumer --> Retry[Bounded retry / dependency wait]
+  Retry --> Consumer
+  Retry --> Dead[Dead-letter / audited redrive]
+  Effect --> External[Persisted external intent when needed]
+  External --> Adapter[Paper submit / query reconciliation]
+  Trace[Correlation / causation / aggregate version] -.-> Outbox
+
+  Control[Control / qualification generation changes] --> Tx
+  Regime[Regime snapshot published] --> Tx

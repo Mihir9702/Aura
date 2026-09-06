@@ -1,0 +1,20 @@
+%% Deployment architecture — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Browser[Authenticated single-owner React browser] --> HTTPS[HTTPS / static web delivery]
+  HTTPS --> API[FastAPI process]
+  API -->|SSE updates / refresh| Browser
+  API --> PG[(PostgreSQL)]
+  Workers[Worker / scheduler processes: same backend build] --> PG
+  Workers --> Storage[(Durable analytical / artifact storage)]
+  Workers --> Markets[Approved data providers]
+  Workers --> Models[Approved model providers]
+  Workers --> Paper[Paper adapter only]
+  Research[Resource-limited research process] --> Storage
+  Research --> Read[Scoped operational reads]
+  Read --> PG
+  Secrets[Server-side secret references] -.-> API
+  Secrets -.-> Workers
+  API --> Telemetry[Redacted telemetry / audit linkage]
+  Workers --> Telemetry
+  PG --> Backup[Backup / tested restore]
+  Storage --> Backup

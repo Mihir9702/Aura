@@ -1,0 +1,12 @@
+%% Deterministic causal regime; no active adaptive allocation path.
+flowchart LR
+  Data[Point-in-time market / approved macro] --> Features[Trend / volatility / breadth / dispersion / liquidity]
+  Features --> Cutoff[Availability / universe / fitted-parameter cutoff]
+  Definition[Versioned definition / missing-input policy] --> Engine[Deterministic Regime Engine]
+  Cutoff --> Engine
+  Engine --> Snapshot[Immutable RegimeSnapshot + quality]
+  Snapshot --> Pods[Shared versioned Pod evidence]
+  Snapshot --> Committee[Committee interpretation only]
+  Snapshot --> Research[Offline regime breakdown / experiments]
+  Research --> Review[Empirical qualification + owner policy review]
+  Review --> Experimental[Adaptive allocation remains EXPERIMENTAL until approved]

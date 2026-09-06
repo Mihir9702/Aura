@@ -1,0 +1,17 @@
+%% Exit lifecycle — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Trigger[Stop / target / time / thesis / policy / user] --> Exit[Exit Proposal bound to position and lots]
+  Exit --> PM[Portfolio Manager: available close quantity]
+  PM --> Mode{Mode authorization}
+  Mode -->|Observe / permission absent| Block[Record blocked exit / required action]
+  Mode -->|Permission valid| Risk[Final deterministic risk / reserve exit quantity]
+  Risk -->|Reject| Block
+  Risk -->|Approve / resize| Gate{Required health good / Full Kill clear / valid permission}
+  Gate -->|Blocked| Block
+  Entry[Entry Halt allows only proven reducing exit] --> Gate
+  Gate -->|Admitted| Order[Order Manager / paper adapter]
+  Order --> Fills[Partial or full fill receipts]
+  Fills --> Ledger[Ledger postings / lot reduction]
+  Ledger --> Remaining{Quantity remaining?}
+  Remaining -->|Yes| Monitor[Continue original thesis monitoring]
+  Remaining -->|No| Closed[POSITION_CLOSED / evaluate outcome]

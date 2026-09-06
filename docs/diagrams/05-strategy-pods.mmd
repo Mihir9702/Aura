@@ -1,0 +1,22 @@
+%% First-class Strategies / shared logic and separate qualification.
+flowchart TD
+  Discovery[Discovery scans and routes] --> Eval[Strategies evaluation port]
+  Research[Research / backtest isolated inputs] --> Eval
+  Inputs[Features / deterministic regime / frozen evidence] --> Eval
+  Eval --> Momentum[Momentum]
+  Eval --> Breakout[Breakout]
+  Eval --> Event[Event / Catalyst]
+  Eval --> Mean[Mean Reversion]
+  Eval --> Swing[Swing Trend]
+  Momentum --> Candidate[Version / horizon / scope-bound candidate]
+  Breakout --> Candidate
+  Event --> Candidate
+  Mean --> Candidate
+  Swing --> Candidate
+  Candidate --> Committee[Separate Committee evidence]
+  Committee --> PM[Shared Portfolio Manager]
+  PM --> Gate[Qualification + mode + risk + capability gates]
+  Gate --> Order[Paper order workflow]
+  Research --> Evidence[Offline evaluation evidence]
+  Evidence --> Owner[Owner-approved scope qualification / activation]
+  Owner --> Gate

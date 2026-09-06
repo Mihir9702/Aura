@@ -1,0 +1,38 @@
+%% Full Aura architecture — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Sources[Market / information sources] --> Data[Data Engine]
+  Data --> Features[Feature Engine]
+  Features --> Regime[Deterministic Market Regime Engine]
+  Regime --> Pods
+  Features --> Scanner[Market Scanner]
+  Scanner --> Pods[Strategies domain / five versioned Pods]
+  Pods --> Candidates[Candidates / triage]
+  Candidates --> Committee[Selective Investment Committee]
+  Knowledge[Knowledge Library] --> Committee
+  Router[Model Router] <--> Committee
+  Committee --> Proposal[Trade Proposal]
+  Proposal --> PM[Portfolio Manager]
+  PM --> Permission[Mode permission]
+  Permission --> Risk[Deterministic Risk Engine]
+  Risk -->|Approve or resize + reservation| OM[Order Manager / submit gate]
+  Risk -->|Reject| Shadow[Shadow Portfolios]
+  OM --> BI[Broker Interface]
+  BI --> Paper[Paper Broker Adapter]
+  Paper --> Receipts[Execution receipts]
+  Receipts --> Ledger[Canonical Portfolio Ledger]
+  Ledger --> PM
+  Ledger --> Monitor[Position Monitor]
+  Data --> Monitor
+  Monitor --> Exit[Exit Proposal]
+  Exit --> PM
+  Shadow --> Research[Backtests / Research League]
+  Research --> Knowledge
+  Research --> Review[Owner qualification / activation policy]
+  Review --> Pods
+  Research -.->|Shared evaluation port only| Pods
+  Health[Entry Halt / Full Kill / Health Gates] -.-> OM
+  Orch[Durable orchestration] -.-> Scanner
+  Orch -.-> Monitor
+  Audit[Audit / reports / UI] -.-> Ledger
+  Committee -.-> Audit
+  Risk -.-> Audit

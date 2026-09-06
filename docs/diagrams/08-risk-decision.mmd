@@ -1,0 +1,14 @@
+%% Risk decision lifecycle — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Inputs[Proposal + allocation + mode permission] --> Lock[Portfolio gate transaction]
+  Lock --> Refresh[Refresh Ledger / shared reservations / qualification / capabilities / policy]
+  Refresh --> Rules[Deterministic rule evaluation]
+  Rules --> Reject[REJECT: zero allowed]
+  Rules --> Resize[RESIZE: smaller positive quantity]
+  Rules --> Approve[APPROVE: requested admissible quantity]
+  Resize --> Commit[Commit decision / reservation / order intent / outbox]
+  Approve --> Commit
+  Reject --> Audit[Persist reasons / no authorization]
+  Commit --> Gate[Recheck action-specific controls / health / qualification before dispatch]
+  Gate -->|Stale / halted| Block[Block or re-evaluate]
+  Gate -->|Valid| Submit[Admit one logical paper submission]

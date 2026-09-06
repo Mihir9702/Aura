@@ -1,0 +1,14 @@
+%% Research and learning loop — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart LR
+  Knowledge[Knowledge / observations] --> Hypothesis[Preregistered hypothesis]
+  Hypothesis --> Backtest[Pinned point-in-time backtest]
+  Backtest --> Holdout[Out-of-sample / walk-forward validation]
+  Holdout --> Paper[Isolated paper experiment]
+  Paper --> Evidence[Evidence / uncertainty / costs]
+  Evidence --> League[Offline multi-metric Strategy and AI scorecards]
+  League --> Findings[Positive / negative / inconclusive findings]
+  Findings --> Knowledge
+  League --> Review[Owner promotion review]
+  Review -->|Approved with regression gates| Version[Versioned qualification / allocation policy; no direct orders]
+  Review -->|Rejected or insufficient| Findings
+  Version --> Hypothesis

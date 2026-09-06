@@ -1,0 +1,16 @@
+%% Position monitoring — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Position[Ledger position / thesis lots] --> Monitor[Deterministic monitor]
+  Market[Fresh market / feature snapshots] --> Monitor
+  Clock[Session clock / deadlines] --> Monitor
+  Monitor -->|No trigger| Record[Record monitoring watermark]
+  Monitor -->|Material new evidence| AI[Bounded AI re-analysis]
+  AI --> Evidence[Validated thesis evidence]
+  Evidence --> Monitor
+  Monitor -->|Stop / target / time / invalidation| Exit[Deduplicated Exit Proposal]
+  Exit --> Workflow[Portfolio / mode / risk / execution]
+  Workflow --> Fill[Paper fill]
+  Fill --> Ledger[Ledger update]
+  Ledger --> Position
+
+  Controls[Entry Halt / suspended Pod retain monitoring] --> Monitor

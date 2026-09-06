@@ -1,0 +1,16 @@
+%% Data architecture — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart LR
+  Providers[Provider data / document versions] --> Stage[Validated staging]
+  Stage --> Files[(Immutable Parquet / artifacts)]
+  Files --> Manifest[Validated manifest publication]
+  Manifest --> PG[(PostgreSQL operational truth)]
+  PG --> Domain[Strategies / qualifications / regimes / candidates / risk / orders]
+  PG --> Ledger[Canonical journals / lots / positions]
+  Files --> Duck[Read-only DuckDB research]
+  PG --> Export[Watermarked analytical exports]
+  Export --> Files
+  Duck --> Eval[Evaluation artifacts / references]
+  Eval --> PG
+  PG --> UI[Versioned API projections]
+  Files --> Backup[Coordinated backup / retained references]
+  PG --> Backup

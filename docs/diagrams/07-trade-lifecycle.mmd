@@ -1,0 +1,17 @@
+%% Trade lifecycle — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Candidate[Candidate] --> Committee[Committee / proposal]
+  Committee --> PM[Portfolio allocation]
+  PM --> Mode{Mode permission}
+  Mode -->|Observe| Preview[Preview only / no submission]
+  Mode -->|Assisted| User[Bound user approval]
+  Mode -->|Autonomous| Policy[Bound mode policy]
+  User --> Final[Current qualified active scope + final risk + reservation + intent]
+  Policy --> Final
+  Final -->|Reject / conflict| NoOrder[Record / re-evaluate / shadow]
+  Final -->|Approve / resize| Gate[Entry Halt / Full Kill / health / mode submit gate]
+  Gate --> OM[Order Manager]
+  OM --> Paper[Paper adapter]
+  Paper --> Fill[Fill receipt]
+  Fill --> Ledger[Ledger posting]
+  Ledger --> Monitor[Position monitoring / controlled exits]

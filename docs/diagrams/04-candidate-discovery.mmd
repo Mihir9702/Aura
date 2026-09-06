@@ -1,0 +1,16 @@
+%% Candidate discovery — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart TD
+  Universe[Point-in-time eligible universe] --> Screen[Cheap quality / quantitative screens]
+  Screen --> Pod[Shared Strategies port / version and horizon]
+  Pod --> Dedup[Candidate identity / deduplication]
+  Dedup --> Discovered[DISCOVERED]
+  Discovered --> Triage[TRIAGED: priority / expiry / budget]
+  Triage --> Analysis[ANALYZING]
+  Analysis --> Proposed[PROPOSED]
+  Triage --> Filtered[FILTERED: policy or no-trade]
+  Analysis --> Filtered
+  Triage --> Expired[EXPIRED]
+  Analysis --> Expired
+  Analysis --> Failed[FAILED: technical outcome]
+  Proposed --> Portfolio[Portfolio workflow]
+  Filtered --> Shadow[Eligible registered shadow policy]

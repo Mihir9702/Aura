@@ -1,0 +1,13 @@
+%% Shadow Portfolio flow — adopted owner-amended baseline; unresolved parameters remain in the Open Decisions register.
+flowchart LR
+  Decision[Decision-time proposal / rejection] --> Inclusion[Registered inclusion policy]
+  Inclusion -->|Insufficient rules or data| Unevaluable[Unevaluable with reason]
+  Inclusion --> Frozen[Freeze entry / exit / costs / capital]
+  Frozen --> Allocation[Counterfactual capital-constrained allocation]
+  Allocation --> Sim[Isolated simulator]
+  Sim --> Ledger[Shadow namespace Ledger]
+  Ledger --> Compare[Comparable metrics + limitations]
+  Actual[Active-paper evaluation snapshots] --> Compare
+  Compare --> League[Offline Research League]
+  League --> Knowledge[Empirical Knowledge / owner review only]
+  Diagnostic[Independent opportunity diagnostics] --> Compare

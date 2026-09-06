@@ -1,0 +1,16 @@
+%% Controls restrict authority; none grants mode/exit permission.
+flowchart TD
+  Intent[Entry / increase or reducing exit intent] --> Full{Full Kill active?}
+  Full -->|Yes| Block[No new submission / prominent blocked risk]
+  Full -->|No| Entry{Entry Halt active and increasing risk?}
+  Entry -->|Yes| Block
+  Entry -->|No| Health{Required action-specific health valid?}
+  Health -->|No or unknown| Block
+  Health -->|Yes| Permission[Mode / exit permission / final risk]
+  Permission --> Qualification[Entry requires current qualified active scope]
+  Qualification --> Admission[Serialized recheck / dispatch admission]
+  Admission --> Paper[Paper adapter]
+  Kill[Activate Full Kill] --> Cancel[Best-effort cancel working orders]
+  Kill --> Continue[Continue receipts / Ledger / reconciliation / diagnostics]
+  Paper --> Continue
+  Kill --> Rearm[Explicit human re-arm / other gates remain]

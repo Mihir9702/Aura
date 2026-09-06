@@ -1,0 +1,15 @@
+%% State is scoped by Pod version / horizon / universe; implementation is separate.
+flowchart LR
+  Development[DEVELOPMENT] --> Backtest[BACKTESTING]
+  Backtest --> Shadow[PAPER_SHADOW]
+  Shadow --> Review[Owner-approved evidence policy / human review]
+  Review --> Qualified[QUALIFIED]
+  Qualified --> Activation[Explicit activation]
+  Activation --> Active[ACTIVE_PAPER]
+  Active --> Suspended[SUSPENDED]
+  Qualified --> Suspended
+  Shadow --> Suspended
+  Suspended --> Resume[Reviewed resume / requalify affected scope]
+  Resume --> Backtest
+  Suspended --> Monitor[Preserve held lots / healthy authorized reducing exits]
+  Resume -->|Evidence still valid and explicit review| Qualified

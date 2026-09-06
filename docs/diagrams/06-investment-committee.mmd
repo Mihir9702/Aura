@@ -1,0 +1,19 @@
+%% Approved roles; required subset selected by versioned measured policy.
+flowchart TD
+  Candidate[Candidate revision] --> Freeze[Freeze features / regime / evidence / roles / cutoff / budget]
+  Freeze --> Router[Model Router]
+  Router --> Market[Market Evidence Analyst]
+  Router --> Event[Event Context Analyst]
+  Router --> Business[Business Context Analyst]
+  Router --> Challenger[Challenger]
+  Router --> Historical[Historical Evidence Analyst]
+  Market --> Validate[Validate schema / citations / temporal scope]
+  Event --> Validate
+  Business --> Validate
+  Challenger --> Validate
+  Historical --> Validate
+  Validate -->|Required evidence returned and valid| Adjudicator[Adjudicator]
+  Validate -->|Invalid or required evidence missing| Failure[Bounded retry / fail / expire]
+  Adjudicator --> Proposal[Structured proposal]
+  Adjudicator --> NoTrade[Defer / no-trade with reasons]
+  Proposal --> PM[Portfolio Manager / no model execution authority]
