@@ -4,6 +4,8 @@ The owner authorized implementation. This run delivers the first runnable M0/M1 
 
 **Paused 2026-09-23.** The owner stopped development and prepared the repository for public release as a personal project. The table below is the final state. "Next slice" records what would follow if work resumed. Re-verified that day: Ruff, strict mypy, 13 domain tests, 11 PostgreSQL integration tests and the production web build passed. The browser suite was not re-run.
 
+**Web redesign 2026-09-24.** At the owner's request the web workspace was redesigned from a clean slate, with a ledger-style visual language recorded under [OD-16](design-bible/15-open-decisions.md). It talks to the same API in the same way: owner sign-in, SSE invalidation with an authoritative refetch, expected-version and idempotent control commands, and no order submission or mode switch. New in the interface: a persistent status bar with PAPER, mode, risk profile, Entry Halt, Full Kill, execution and data freshness; a route per view; decimal amounts formatted from the server's strings without floating-point conversion; time-zone labels on timestamps; and loading and stale states. Verified the same day: the TypeScript check, the Vite production build, and both Playwright browser tests (updated for the new labels) against a local PostgreSQL 17 stack in Playwright's Chromium. The backend did not change, so Ruff, mypy and the Python tests were not re-run.
+
 | Area | Implemented | Remaining |
 |---|---|---|
 | Runtime | Python 3.12/uv, FastAPI, SQLAlchemy/Alembic, PostgreSQL 17; React/TS/Vite/Tailwind; lockfiles; Windows scripts | Hosted auth/runtime, CI, production privileges |
@@ -13,7 +15,7 @@ The owner authorized implementation. This run delivers the first runnable M0/M1 
 | Controls | Persistent Entry Halt/Full Kill, expected-version/idempotent owner commands, audit; pure health-gate function | Real probes, automatic trigger policy, cancellation delivery, verified human re-arm |
 | Risk/strategy/regime | Capacity sizing, five unimplemented registry entries, lifecycle and temporal validators | Full risk rules, numeric profiles, persistent scoped qualification/activation, methodologies and regime computation |
 | Events | Outbox/inbox acknowledgement with commit-order-gap test | Scheduler, substantive consumers, dead-letter/redrive, operational SLIs |
-| UI/contracts | Authenticated overview, Ledger records, readiness and controls; SSE/refetch; generated Overview schema/types | Full proposal/Committee/order/report/research flows; ADIYA-informed refinement |
+| UI/contracts | Authenticated overview, portfolio, pod lifecycle, research and operations views; persistent status bar; readiness, controls and audit log; SSE/refetch; generated Overview schema/types | Full proposal/Committee/order/report/research flows; notification channels (OD-16) |
 | Research/knowledge | Explicit unavailable states and architectural specifications | Backtesting, League metrics, corpus/retrieval, prospective strategy evaluation |
 
 ## Verified

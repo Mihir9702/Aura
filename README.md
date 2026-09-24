@@ -4,6 +4,8 @@ A single-owner research workspace for US-listed stocks and ETFs. It is designed 
 
 > **Status: paused (September 2026).** Aura is not under active development. The foundation described below runs and is tested. The trading intelligence (market data, strategies, AI analysis) exists only as design documents. Aura is paper-only by design, with no code path to a real broker or real money. Nothing here is investment advice or evidence that any strategy works.
 
+![Aura's overview page: a dark status bar showing paper mode and both safety controls, the $500.00 challenge account with its equity double-underlined, the five strategy pods at the start of their lifecycle, and a readiness checklist](docs/screenshots/overview.png)
+
 ## What's in the repo
 
 - **A runnable foundation:** an authenticated web app, a double-entry accounting ledger, safety controls, event plumbing, 24 backend tests and Playwright browser tests.
