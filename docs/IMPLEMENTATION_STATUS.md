@@ -2,6 +2,8 @@
 
 The owner authorized implementation. This run delivers the first runnable M0/M1 foundation, not a comprehensive Aura implementation or completed milestone acceptance.
 
+**Paused 2026-09-23.** The owner stopped development and prepared the repository for public release as a personal project. The table below is the final state. "Next slice" records what would follow if work resumed. Re-verified that day: Ruff, strict mypy, 13 domain tests, 11 PostgreSQL integration tests and the production web build passed. The browser suite was not re-run.
+
 | Area | Implemented | Remaining |
 |---|---|---|
 | Runtime | Python 3.12/uv, FastAPI, SQLAlchemy/Alembic, PostgreSQL 17; React/TS/Vite/Tailwind; lockfiles; Windows scripts | Hosted auth/runtime, CI, production privileges |

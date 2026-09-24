@@ -8,7 +8,7 @@ Aura is a market research, quantitative analysis, AI reasoning, portfolio manage
 - [Design Bible](docs/design-bible/README.md) indexes architecture, contracts, workflows, and acceptance criteria.
 - [Open Decisions](docs/design-bible/15-open-decisions.md) distinguishes SETTLED, RECOMMENDED, OPEN, and EXPERIMENTAL.
 - [ADRs](docs/adr/README.md) record architectural decisions; [status](docs/ARCHITECTURE_STATUS.md) records readiness. [Diagrams](docs/diagrams/README.md) are editable Mermaid.
-- Implementation was authorized on 2026-09-10. Continue within the implemented foundation and applicable decision gates; see docs/IMPLEMENTATION_STATUS.md. Active trading policies and providers remain unresolved.
+- Implementation was authorized on 2026-09-10 and paused by the owner on 2026-09-23. Resuming is an owner decision. See docs/IMPLEMENTATION_STATUS.md. Active trading policies and providers remain unresolved.
 
 ## Mandatory boundaries
 

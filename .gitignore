@@ -15,3 +15,5 @@ data/raw/
 data/curated/
 data/artifacts/
 *.log
+.env.*
+!.env.example

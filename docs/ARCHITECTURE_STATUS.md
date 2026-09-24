@@ -2,6 +2,8 @@
 
 Updated: 2026-09-10. The owner authorized a build after the architecture refinement. The first runnable local foundation now exists. **M0/M1 are partially implemented; no complete trading-platform or milestone acceptance is claimed.**
 
+**Paused 2026-09-23.** The owner stopped development and prepared the repository for public release as a personal project. This document describes the final state. Resuming work is an owner decision.
+
 ## Implemented now
 
 Authenticated React/TypeScript/Vite/Tailwind workspace; FastAPI and generated OpenAPI/TypeScript contracts; PostgreSQL 17 migrations; once-only 500.00 USD challenge funding; balanced append-only transaction-sealed journals; persistent audited Entry Halt/Full Kill; SSE refresh; isolated SHADOW fixture reservations/fractional fills and unknown-submission recovery primitives; outbox/inbox acknowledgement; Windows setup/check scripts and native restore drill.
