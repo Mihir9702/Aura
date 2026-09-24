@@ -1,6 +1,6 @@
 # Aura Design Bible
 
-This package translates [Aura_Seed.md](../../Aura_Seed.md) into an implementation handoff. It is architecture and documentation only: no application, executable schemas, migrations, dependency locks, or tested integrations exist yet.
+This package translates [Aura_Seed.md](../../Aura_Seed.md) into an implementation handoff. It is the architectural specification. A first runnable foundation now exists; see [implementation status](../IMPLEMENTATION_STATUS.md) for the precise subset and test evidence.
 
 ## Authority and status
 
@@ -8,7 +8,7 @@ Precedence: explicit subsequent product-owner decisions → seed → accepted AD
 
 **SETTLED** means stated by the seed/current brief or explicitly approved later. **RECOMMENDED** means a concrete design proposal awaiting adoption. **OPEN** means an owner decision remains. **EXPERIMENTAL** means research-only, not permitted to influence production allocation without promotion approval. The owner has approved OD-01 **with amendments** in the [owner refinement record](18-owner-decisions.md). The detailed engineering baseline, conceptual contracts and tooling direction are now adopted. Explicitly unresolved policy parameters remain OPEN; new recommendations are labeled as such. Normative requirements describe the adopted design without inventing numeric policy or vendor choices. Conceptual contracts are still non-executable and require implementation validation.
 
-OD-01 is closed as APPROVED WITH AMENDMENTS; do not ask for its approval again. A subsequent implementation prompt is still required; changes require synchronized contracts/ADRs. Open product policy can remain open for unrelated slices, but cannot be supplied with invented defaults.
+OD-01 is closed as APPROVED WITH AMENDMENTS; do not ask for its approval again. Implementation was authorized on 2026-09-10; changes require synchronized contracts/ADRs. Open product policy can remain open for unrelated slices, but cannot be supplied with invented defaults.
 
 ## Reading map
 

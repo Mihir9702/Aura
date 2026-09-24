@@ -1,0 +1,19 @@
+{
+  "name": "aura",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/dev.ps1",
+    "dev:web": "npm run dev -w apps/web",
+    "build": "npm run build -w apps/web",
+    "check": "npm run check -w apps/web",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "openapi-typescript": "^7.13.0",
+    "prettier": "^3.9.6"
+  }
+}

@@ -8,7 +8,7 @@ Aura is a market research, quantitative analysis, AI reasoning, portfolio manage
 - [Design Bible](docs/design-bible/README.md) indexes architecture, contracts, workflows, and acceptance criteria.
 - [Open Decisions](docs/design-bible/15-open-decisions.md) distinguishes SETTLED, RECOMMENDED, OPEN, and EXPERIMENTAL.
 - [ADRs](docs/adr/README.md) record architectural decisions; [status](docs/ARCHITECTURE_STATUS.md) records readiness. [Diagrams](docs/diagrams/README.md) are editable Mermaid.
-- This initial package authorizes documentation only. Do not start application implementation without a subsequent implementation request and the applicable decision gates.
+- Implementation was authorized on 2026-09-10. Continue within the implemented foundation and applicable decision gates; see docs/IMPLEMENTATION_STATUS.md. Active trading policies and providers remain unresolved.
 
 ## Mandatory boundaries
 
@@ -28,7 +28,7 @@ Aura is a market research, quantitative analysis, AI reasoning, portfolio manage
 - Test accounting invariants, concurrent allocation, duplicate/out-of-order events, unknown submission outcomes, stale data, Entry Halt/Full Kill and qualification races, and point-in-time research. UI and happy-path tests alone do not establish correctness.
 - Keep code, contracts, ADRs, diagrams, open decisions, and status synchronized in the same change. Explain migrations and compatibility; never silently rewrite historical decisions.
 - Do not invent material product policy. Record options and a recommendation in the register, ask the owner when the decision blocks the requested slice, and continue independent work. Recommendations are not accepted policy.
-- No implementation commands exist yet. Proposed layout/tooling and future verification commands are in [implementation plan](docs/design-bible/13-implementation-plan.md); do not report them as runnable today. Use milestones and Git history; release tags require a coherent release.
+- Runnable setup/check commands are in [README](README.md) and scripts/. [Implementation status](docs/IMPLEMENTATION_STATUS.md) distinguishes working components from pending design requirements. Use milestones and Git history; release tags require a coherent release.
 - Done means the requested scope works with real declared integrations, applicable tests pass, audit/recovery paths work, docs agree, and limitations are explicit. Never present mocks, paper results, or unvalidated AI confidence as production capability or investment evidence.
 
 Local development is single-owner and Windows-friendly; hosted target is authenticated single-owner, not multi-tenant. Use SSE initially with authoritative reconnect refresh. Tooling direction and full-text-first Knowledge architecture are adopted; vendors, numeric risk/evaluation thresholds and spending limits remain open.

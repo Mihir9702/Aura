@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aura-core"
+version = "0.0.1"
+description = "Aura paper-only research and accounting foundation"
+requires-python = ">=3.12,<3.14"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "sqlalchemy>=2.0,<2.1", "psycopg[binary]>=3.2,<4", "alembic>=1.14,<2", "pydantic-settings>=2.7,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "httpx>=0.28,<1", "ruff>=0.9,<1", "mypy>=1.14,<2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["packages/aura/src/aura"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires a dedicated PostgreSQL test database"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+

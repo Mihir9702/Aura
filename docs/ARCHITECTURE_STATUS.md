@@ -1,40 +1,31 @@
-# Aura architecture status
+# Aura architecture and implementation status
 
-Updated: 2026-09-05 after product-owner refinement. Scope: **documentation only**. Original [seed](../Aura_Seed.md) and ADR-0001–0014 are preserved. No application code, dependencies, executable schemas, migrations or integrations were created.
+Updated: 2026-09-10. The owner authorized a build after the architecture refinement. The first runnable local foundation now exists. **M0/M1 are partially implemented; no complete trading-platform or milestone acceptance is claimed.**
 
-## Newly settled owner decisions
+## Implemented now
 
-- **OD-01 APPROVED WITH AMENDMENTS:** detailed engineering baseline and tooling direction adopted; no need to ask for approval again.
-- First-class Strategies domain; all five named Pods structurally supported; shared versioned research/active logic; simultaneous horizons, scoped qualification and explicit activation separate from implementation.
-- Deterministic versioned Market Regime Engine; AI cannot set canonical state. Adaptive allocation/risk remains EXPERIMENTAL.
-- **500.00 USD** initial shared challenge capital; capital-independent architecture; LONG-only US equities/ETFs, no leverage/shorts, fractionals where instrument/adapter support them; unsupported mechanics fail closed. Options data is evidence only.
-- Approved six Committee roles, concurrent required specialists then adjudication, measured escalation, code-owned quantitative calculations.
-- Entry Halt and Full Kill are separate from component Health Gates. Healthy authorized reducing exits may continue under Entry Halt; Full Kill blocks all new submissions, best-effort cancels, preserves receipts/Ledger/reconciliation/diagnostics, never auto-liquidates and requires human re-arm.
-- Default Observe; Assisted and Autonomous share the same authority/audit path. Balanced remains default under Global Guardrails.
-- Single-owner Windows-friendly local development; authenticated single-owner hosted target, no multi-tenancy; API/worker process roles and SSE updates.
-- Rights-aware versioned full-text-first Knowledge Library; embeddings only after material measured benefit.
-- Offline League and multi-metric evidence scorecards, no direct order authority or raw reward-for-risk; owner-approved versioned policy required to use evidence for qualification/allocation.
+Authenticated React/TypeScript/Vite/Tailwind workspace; FastAPI and generated OpenAPI/TypeScript contracts; PostgreSQL 17 migrations; once-only 500.00 USD challenge funding; balanced append-only transaction-sealed journals; persistent audited Entry Halt/Full Kill; SSE refresh; isolated SHADOW fixture reservations/fractional fills and unknown-submission recovery primitives; outbox/inbox acknowledgement; Windows setup/check scripts and native restore drill.
 
-See [owner decision record](design-bible/18-owner-decisions.md), [22 ADRs](adr/README.md), [Design Bible](design-bible/README.md) and [19 editable Mermaid diagrams](diagrams/README.md).
+See [implementation status](IMPLEMENTATION_STATUS.md) for module-by-module limitations and [README](../README.md) for runnable commands. The local UI remains Observe/Balanced/PAPER and exposes no order submission or mode-switch endpoint. All five Pod methodologies remain UNIMPLEMENTED; registry/lifecycle and temporal/risk primitives do not imply qualification. Full Kill re-arm is unavailable until actual health/reconciliation prerequisites can be verified.
 
-## Genuinely open decisions
+## Verification
 
-The [register](design-bible/15-open-decisions.md) now distinguishes approved portions from residual questions. Open: eligibility thresholds; Pod/horizon implementation priority and exact signal/session/cadence rules; data/news/paper/model/hosting vendors; order/increment/minimum/cost/simulation details; approval expiry/exit consent; final numeric risk/allocation limits; required-role escalation/failure policy; actual corpus rights/retention; settlement/lot/fee/action/rounding/valuation conventions; health trigger/release thresholds and recovery targets; hosted auth/backup implementation; spending amounts; evaluation benchmarks/thresholds/windows; ADIYA-informed UI direction; regime definitions/thresholds/approved macro inputs (OD-17).
+13 domain tests, 11 real PostgreSQL integration tests, Chrome end-to-end navigation/control/mobile verification, Ruff, strict mypy, TypeScript and production Vite build passed. Native PostgreSQL backup/restore verified balanced journals and unique challenge funding. These are subset tests, not all design acceptance criteria.
 
-No vendor, runtime model, API price, monthly budget, or final numeric risk/qualification limit was selected.
+## Settled architecture preserved
 
-## Readiness for an implementation prompt
+OD-01 is approved with amendments. First-class Strategies and deterministic Regime domains, five named Pods with per-version/horizon qualification, shared 500.00 USD initial capital, LONG-only/no-leverage/conditional fractions, approved six Committee roles, offline League, canonical Ledger, paper-only execution and Global Guardrails remain authoritative.
 
-**Yes: ready for a bounded M0/M1 implementation prompt.** OD-01 and minimum local runtime direction are already approved. This documentation request itself still does not authorize coding. A capable implementing agent can follow [module/repository plan](design-bible/13-implementation-plan.md), [contracts](design-bible/12-contracts.md) and [32 acceptance cases](design-bible/14-verification.md) without prior chat history.
+Entry Halt permits only healthy authorized reducing exits; Full Kill blocks all new submissions, never auto-liquidates and requires human re-arm. Single-owner Windows-friendly local development and authenticated single-owner hosted target/SSE direction remain settled. Rights-aware full-text-first Knowledge and multi-metric evaluation remain the target.
 
-M0 may select/pin compatible tool versions, create Windows-friendly commands, module/API/contracts/config/SSE foundations and single-owner local safety. M1 may implement journals, fractional invariants, 500.00 funding, shared reservations, qualification/capability gates and deterministic recovery using explicitly labeled synthetic fixtures.
+[Owner decisions](design-bible/18-owner-decisions.md), [23 ADRs](adr/README.md), [20 Mermaid sources](diagrams/README.md) and the [Design Bible](design-bible/README.md) distinguish target design from implemented scope.
 
-**Safely deferred during M0/M1:** external vendors/model names/prices/budgets, hosting vendor, UI screenshots, real corpus selection, exact production signal/regime thresholds and schedule/qualification criteria. Unsettled accounting/order conventions can be mandatory configuration or alternative test fixtures; do not silently make them live defaults. Local access controls and fail-closed configuration cannot be deferred. No paid/live data or active-paper submission is implied by fixture completion.
+## Remaining decisions and next work
 
-Before active-paper entries: approve residual policies for the enabled scope, qualify actual data/adapter capabilities, settle required accounting/exit/risk rules, build the minimum prospective qualification evidence slice and obtain Pod-version/horizon qualification plus activation. M3 cannot bypass this merely because broad Research League work is scheduled for M5. Each Pod/horizon qualifies separately.
+The [register](design-bible/15-open-decisions.md) retains eligibility/signal/horizon/schedule rules, market/news/paper/model/hosting selection, price/cost/settlement/lot/action conventions, exit consent, final numeric risk/allocation limits, required-role policy, corpus rights/retention, health/recovery targets, budgets, benchmark/qualification thresholds and ADIYA-informed identity.
 
-## Highest-risk assumptions and review outcome
+M0/M1 development can continue using explicit synthetic fixtures: persist scoped qualifications, implement receipt quarantine/replay/corrections and substantive scheduling, then qualify an Observe data/strategy slice. Do not choose production policy through test defaults. Before active paper entries, approve relevant open policies and obtain actual data/adapter qualification plus Pod/horizon qualification and activation.
 
-Highest risks remain causal historical data/regime availability, adapter identity/reconciliation, fractional precision/corporate actions at small capital, concurrent shared allocation, stale eligibility/control races, realistic paper fills, and whether AI adds value after costs. Seconds-level/HFT capability is unqualified. In-flight operations may still fill after halt/suspension; no zero-later-fill promise is made.
+Highest residual risks: incomplete operational recovery beyond fixtures, fractional actions/corrections, causal data/regime availability, eligibility/control races, realistic fill assumptions and unproven AI value after costs. Regime-adaptive allocation remains EXPERIMENTAL. No vendor, model, API price, monthly budget or numeric trading limit was invented.
 
-Completed a fresh [adversarial review](design-bible/16-architecture-review.md), addressing capital duplication, strategy reuse/qualification races, fractional residuals, Entry Halt/Full Kill composition, regime leakage, League feedback and milestone dependencies. Local documentation link/inventory/source checks are reported in that review. Mermaid sources are editable but not rendered here; no application tests can run without an implementation.
+Original seed/ADR history is preserved; the new implementation ADR records engineering choices. Architecture-phase reviews remain historical evidence; this status and IMPLEMENTATION_STATUS govern present readiness.

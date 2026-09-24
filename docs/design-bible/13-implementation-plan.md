@@ -1,6 +1,6 @@
 # Proposed repository and implementation plan
 
-**Adopted direction; no application directories or commands below exist yet.** OD-01 is approved with amendments. This run creates documentation only. A subsequent implementation prompt and slice-specific decisions gate coding; do not interpret a directory sketch as an implemented subsystem.
+**Adopted direction; partially implemented as of 2026-09-10.** See [implementation status](../IMPLEMENTATION_STATUS.md) and [runnable commands](../../README.md). The layout below describes the complete target. Slice-specific decisions gate additional capabilities; do not interpret a directory sketch as an implemented subsystem.
 
 ## Monorepo layout
 
@@ -46,7 +46,7 @@ SETTLED stack: Python/FastAPI; React/TypeScript/Vite/Tailwind/shadcn where appro
 
 Adopted tooling direction: uv for Python, npm for web, pytest for Python tests, Ruff plus a selected type checker, SQLAlchemy/Alembic for persistence, Vitest/Testing Library for web units, Playwright for browser flows. These directions are approved, but no installed or compatibility-verified versions are claimed. Pin supported versions/lockfiles during the authorized bootstrap and consult primary documentation then.
 
-Future command convention (to implement and document in M0): `scripts/bootstrap`, `scripts/dev`, `scripts/check`, `scripts/test-integration`, `scripts/test-accounting`, `scripts/test-replay`, `scripts/test-e2e`, `scripts/evaluate-ai`, and `scripts/backup-restore-check`. Implement Windows-friendly PowerShell or cross-platform entrypoints during M0; do not assume POSIX-only commands. **These are command names to define, not runnable instructions.** No npm/Python test or build has been run because no application exists.
+Future command convention (to implement and document in M0): `scripts/bootstrap`, `scripts/dev`, `scripts/check`, `scripts/test-integration`, `scripts/test-accounting`, `scripts/test-replay`, `scripts/test-e2e`, `scripts/evaluate-ai`, and `scripts/backup-restore-check`. Implement Windows-friendly PowerShell or cross-platform entrypoints during M0; do not assume POSIX-only commands. Some target commands now exist; use the root README for the verified subset and test results. This complete target list is not a milestone-completion claim.
 
 Local setup should validate prerequisites, start PostgreSQL, apply migrations, load synthetic fixtures, start API/worker/web, and default to Observe with paper credentials absent. `.env.example` documents names without values; actual secrets live outside version control. Nonsecret settings and policies are versioned, validated, and auditable. Separate data roots/IDs keep tests and research out of active-paper state. Never commit user documents, bulk market data, logs, secrets, or generated private artifacts.
 

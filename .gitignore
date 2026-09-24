@@ -1,0 +1,17 @@
+.venv/
+.env
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+node_modules/
+dist/
+test-results/
+playwright-report/
+*.tsbuildinfo
+data/raw/
+data/curated/
+data/artifacts/
+*.log

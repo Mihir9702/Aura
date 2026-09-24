@@ -281,3 +281,7 @@ ChallengeCapital: challenge_id, portfolio_id, initial_capital: {amount: "500.00"
 Effective mechanics are the intersection of instrument and adapter capabilities. Reject unsupported/unknown mechanics; do not round quantity up, silently borrow, enable options trading from options evidence, or reset cash on restart. Runtime caps are capital-independent functions of state/policy; the initial funding journal is exactly once. Test fixtures may use other explicitly labeled capital to prove generality.
 
 Additional ports: Strategies.evaluate(pod_version, horizon, frozen_inputs) → candidates/no-signal; Strategies.qualification(scope) → authoritative eligibility; Regime.compute(definition, manifest, cutoff) → immutable snapshot; Operations.effective_capability(action, scope, current_state) → blocking reasons. Research uses the same Strategies/Regime ports but isolated portfolio/execution identities.
+
+## Implemented subset — 2026-09-10
+
+[OpenAPI](../../packages/contracts/openapi.json) and generated frontend types now cover the implemented local API, including Overview and control commands. The complete trading/research contracts above remain target specifications. See [implementation status](../IMPLEMENTATION_STATUS.md) before treating any conceptual interface as implemented.

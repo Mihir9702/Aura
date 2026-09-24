@@ -1,0 +1,595 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Aura local foundation",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Health Api Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/session": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_api_session_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "boolean"
+                  },
+                  "type": "object",
+                  "title": "Response Login Api Session Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Logout",
+        "operationId": "logout_api_session_delete",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "boolean"
+                  },
+                  "type": "object",
+                  "title": "Response Logout Api Session Delete"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/overview": {
+      "get": {
+        "summary": "Overview",
+        "operationId": "overview_api_overview_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Overview"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/journals": {
+      "get": {
+        "summary": "Journals",
+        "operationId": "journals_api_journals_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "type": "array",
+                  "title": "Response Journals Api Journals Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/events": {
+      "get": {
+        "summary": "Events",
+        "operationId": "events_api_events_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  "type": "array",
+                  "title": "Response Events Api Events Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/controls/{control}": {
+      "post": {
+        "summary": "Controls",
+        "operationId": "controls_api_controls__control__post",
+        "parameters": [
+          {
+            "name": "control",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Control"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ControlCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Controls Api Controls  Control  Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stream": {
+      "get": {
+        "summary": "Stream",
+        "operationId": "stream_api_stream_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ControlCommand": {
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "title": "Active"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          },
+          "reason": {
+            "type": "string",
+            "maxLength": 500,
+            "minLength": 4,
+            "title": "Reason"
+          },
+          "command_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Command Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "active",
+          "expected_version",
+          "reason",
+          "command_id"
+        ],
+        "title": "ControlCommand"
+      },
+      "Controls": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "entry_halt": {
+            "type": "boolean",
+            "title": "Entry Halt"
+          },
+          "full_kill": {
+            "type": "boolean",
+            "title": "Full Kill"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "entry_halt",
+          "full_kill"
+        ],
+        "title": "Controls"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Integration": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "const": "NOT_CONFIGURED",
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name",
+          "status"
+        ],
+        "title": "Integration"
+      },
+      "Login": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "format": "password",
+            "title": "Key",
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key"
+        ],
+        "title": "Login"
+      },
+      "Overview": {
+        "properties": {
+          "portfolio": {
+            "$ref": "#/components/schemas/PortfolioSnapshot"
+          },
+          "mode": {
+            "type": "string",
+            "const": "OBSERVE",
+            "title": "Mode"
+          },
+          "risk_profile": {
+            "type": "string",
+            "const": "BALANCED",
+            "title": "Risk Profile"
+          },
+          "controls": {
+            "$ref": "#/components/schemas/Controls"
+          },
+          "strategies": {
+            "items": {
+              "$ref": "#/components/schemas/Strategy"
+            },
+            "type": "array",
+            "title": "Strategies"
+          },
+          "integrations": {
+            "items": {
+              "$ref": "#/components/schemas/Integration"
+            },
+            "type": "array",
+            "title": "Integrations"
+          },
+          "regime": {
+            "$ref": "#/components/schemas/RegimeReadiness"
+          },
+          "execution_enabled": {
+            "type": "boolean",
+            "const": false,
+            "title": "Execution Enabled"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "portfolio",
+          "mode",
+          "risk_profile",
+          "controls",
+          "strategies",
+          "integrations",
+          "regime",
+          "execution_enabled"
+        ],
+        "title": "Overview"
+      },
+      "PortfolioSnapshot": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "currency": {
+            "type": "string",
+            "const": "USD",
+            "title": "Currency"
+          },
+          "environment": {
+            "type": "string",
+            "enum": [
+              "ACTIVE_PAPER",
+              "SHADOW"
+            ],
+            "title": "Environment"
+          },
+          "capital": {
+            "type": "string",
+            "title": "Capital"
+          },
+          "cash": {
+            "type": "string",
+            "title": "Cash"
+          },
+          "realized_pnl": {
+            "type": "string",
+            "title": "Realized Pnl"
+          },
+          "fees": {
+            "type": "string",
+            "title": "Fees"
+          },
+          "valuation_status": {
+            "type": "string",
+            "enum": [
+              "NO_MARKS",
+              "CASH_ONLY"
+            ],
+            "title": "Valuation Status"
+          },
+          "equity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Equity"
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/Position"
+            },
+            "type": "array",
+            "title": "Positions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "currency",
+          "environment",
+          "capital",
+          "cash",
+          "realized_pnl",
+          "fees",
+          "valuation_status",
+          "equity",
+          "positions"
+        ],
+        "title": "PortfolioSnapshot"
+      },
+      "Position": {
+        "properties": {
+          "instrument": {
+            "type": "string",
+            "title": "Instrument"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope"
+          },
+          "quantity": {
+            "type": "string",
+            "title": "Quantity"
+          },
+          "cost_basis": {
+            "type": "string",
+            "title": "Cost Basis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "instrument",
+          "scope",
+          "quantity",
+          "cost_basis"
+        ],
+        "title": "Position"
+      },
+      "RegimeReadiness": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "NOT_READY",
+            "title": "Status"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "reason"
+        ],
+        "title": "RegimeReadiness"
+      },
+      "Strategy": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "implementation": {
+            "type": "string",
+            "title": "Implementation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "status",
+          "implementation"
+        ],
+        "title": "Strategy"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

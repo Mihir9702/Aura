@@ -1,6 +1,6 @@
 # Testing strategy and acceptance criteria
 
-This is a **adopted verification plan**, not a report of application tests passing. No executable implementation exists. The documentation review record is in [architecture review](16-architecture-review.md).
+This is a **adopted verification plan**, not a report of application tests passing. The first runnable foundation is documented in [implementation status](../IMPLEMENTATION_STATUS.md); only its listed tests are claimed to pass. The documentation review record is in [architecture review](16-architecture-review.md).
 
 ## Test layers
 

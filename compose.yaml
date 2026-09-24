@@ -1,0 +1,20 @@
+name: aura-local
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: aura
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/bootstrap.ps1}
+      POSTGRES_DB: aura
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - aura-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aura -d aura"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  aura-postgres:
+

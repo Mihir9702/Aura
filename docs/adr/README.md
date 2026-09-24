@@ -29,3 +29,5 @@ The original 0001–0014 records are preserved verbatim. Their historical unreso
 - [0020 Entry Halt, Full Kill and component Health Gates](0020-capability-controls.md)
 - [0021 Adopt rights-aware full-text-first Knowledge Library](0021-full-text-knowledge.md)
 - [0022 Offline League and multi-metric evidence scorecards](0022-offline-evaluation.md)
+
+- [0023 Local foundation implementation boundaries](0023-local-foundation-implementation.md)

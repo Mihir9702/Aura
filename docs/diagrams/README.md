@@ -24,3 +24,5 @@ Full architecture arrows show logical flow, not one service per box. Paper-order
 - [Market Regime pipeline](17-regime-pipeline.mmd)
 - [Entry Halt / Full Kill / Health Gates](18-capability-controls.mmd)
 - [Strategy lifecycle and qualification](19-strategy-lifecycle.mmd)
+
+- [Implemented local foundation](20-implemented-foundation.mmd)

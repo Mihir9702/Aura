@@ -1,0 +1,14 @@
+%% Implemented 2026-09-10 scope; desired full architecture remains in diagram 02.
+flowchart TD
+  Owner[Local single owner] --> Web[React / TypeScript / Vite]
+  Web -->|Session cookie and commands| API[FastAPI / Observe only]
+  API --> Controls[Persisted Entry Halt / Full Kill]
+  API --> Ledger[Challenge funding / Ledger reads]
+  Controls --> PG[(PostgreSQL 17)]
+  Ledger --> PG
+  PG --> Outbox[Transactional outbox]
+  Outbox --> Worker[Inbox acknowledgement worker]
+  API -->|SSE invalidation / refresh| Web
+  Tests[Explicit fixture tests] --> Shadow[SHADOW reservations / fractional fills]
+  Shadow --> PG
+  Missing[No vendor / active order / model integration] -.-> API
